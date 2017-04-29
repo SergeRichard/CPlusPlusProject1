@@ -1,0 +1,19 @@
+<Area name="Dungeon">
+	<Room name="cell">
+		<Desc>
+			You are in a dungeon. You seem to be the only prisoner in the cell. You are facing the door to the cell. A guard sitting at the table sleeping. Cell keys on the table.
+		</Desc>
+	</Room>
+	<Room name="Stairwell">
+		<Desc>
+			You are in a stairwell. Stairs lead up or down.
+		</Desc>		
+	</Stairwell>
+</Area>
+
+
+
+
+
+
+
