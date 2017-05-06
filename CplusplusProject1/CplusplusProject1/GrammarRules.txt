@@ -1,0 +1,13 @@
+World:
+	attribute:	name=""
+	Can have <Area> 's
+	
+Area:
+	attribute:	name=""
+	Can have <Room> 's
+
+Room:
+	attribute:	name=""
+	Can have <Desc>. Only one.
+
+

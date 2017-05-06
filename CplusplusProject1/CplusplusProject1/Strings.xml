@@ -1,0 +1,21 @@
+<String name="WelcomeMessage">
+	Welcome to Bengo Island!
+</String>
+<String name="InACell">
+	You are in a dungeon. You seem to be the only prisoner in the cell. You are facing the door to the cell. A guard sitting at the table sleeping. Cell keys on the table.
+</String>
+<String name="YouReachOut">
+	You reach out with stick through the bars and manage to hook on to key ring. You gently pull the stick with the keys through the bars. You now have keys.	
+</String>
+<String name="TheDoorOpening">
+	The door opening wakes up guard. As the guard goes for his gun, you throw the rock and hit the guard in the head which knocks him out.
+</String>
+<String name="OutsideTheCell">
+	You are in a dungeon outside the cell. The guard is on the ground unconscious inside a locked cell.
+</String>
+<String name="AtAStairwell">
+	You arrive at a stairwell. Stairs lead up or down.
+</String>
+<String name="ExitDoor">
+	You arrive at the exit door and use the keys to unlock it. You leave, you are free! Congratulations! You win.
+</String>
