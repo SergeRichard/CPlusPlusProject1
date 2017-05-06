@@ -1,14 +1,10 @@
 #include "Game.h"
-#include <iostream>
-#include <string>
-
-using std::cout;
-using std::string;
-using std::endl;
 
 Game::Game()
 {
-	cout << "You're goal is to escape Fangle Dungeon." << endl << endl;
+	m_strings = m_XMLFetcher.GetStrings();
+
+	std::cout << m_strings["WelcomeMessage"] << std::endl;
 }
 
 
