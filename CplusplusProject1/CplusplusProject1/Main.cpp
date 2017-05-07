@@ -5,12 +5,12 @@
 int main() 
 {
 	Game game;
-	//while (true)
-	//{
-	//	
+	while (true)
+	{
+		game.PlayerInput();
 
 
-	//}
+	}
 
 
 

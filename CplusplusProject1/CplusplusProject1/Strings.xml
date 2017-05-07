@@ -2,7 +2,7 @@
 	Welcome to Bengo Island!
 </String>
 <String name="InACell">
-	You are in a dungeon. You seem to be the only prisoner in the cell. You are facing the door to the cell. A guard sitting at the table sleeping. Cell keys on the table.
+	You are in a dungeon. You seem to be the only prisoner in the cell. You are facing the door to the cell. A guard sitting at the table is sleeping. Cell keys on the table.
 </String>
 <String name="YouReachOut">
 	You reach out with stick through the bars and manage to hook on to key ring. You gently pull the stick with the keys through the bars. You now have keys.	
