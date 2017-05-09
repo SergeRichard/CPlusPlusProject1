@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "Item.h"
 
 class Player
 {
@@ -10,11 +11,11 @@ public:
 	Player();
 	~Player();
 
-	void AddItemToInventory(std::string item) { inventory.push_back(item); }
-	std::vector<std::string> GetInventory() { return inventory; }
+	void AddItemToInventory(Item item) { inventory.push_back(item); }
+	std::vector<Item> GetInventory() { return inventory; }
 
 private:
 
-	std::vector<std::string> inventory;
+	std::vector<Item> inventory;
 };
 

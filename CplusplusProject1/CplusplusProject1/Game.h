@@ -8,6 +8,7 @@
 #include "GameParser.h"
 #include "HelperFunctions.h"
 #include "Item.h"
+#include "Player.h"
 
 class Area;
 
@@ -22,7 +23,6 @@ public:
 	void PlayerInput();
 private:
 	void DisplayAreaDescription();
-	void ItemsSeen();
 
 	void CreateAreas();
 	void ProcessCommand(std::string command);
@@ -32,5 +32,6 @@ private:
 	std::map<States, Area> m_areasMap;
 	GameParser m_XMLFetcher;
 	States m_state;
+	Player m_player;
 };
 
