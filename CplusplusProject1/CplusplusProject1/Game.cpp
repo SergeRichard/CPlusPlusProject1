@@ -68,13 +68,17 @@ void Game::ProcessCommand(std::string command) {
 	if (firstWord == "get") {
 		if (secondWord == "keys") {
 			if (m_state == States::InsideCell && m_areasMap[States::InsideCell].IsLocked() == true) {
-				for (auto i : m_player.GetInventory()) {
+				bool itemFound = false;
+				for (auto i : m_player.GetInventory()) {		
+					if (itemFound)
+						break;
 					if (i.name == "Stick") {
 						for (auto a : m_areasMap[States::OutsideCell].GetItems())
 						{
 							if (a.name == "Keys") {
 								std::cout << "You reach out through the bars with the stick and hook on to key ring pulling it back inside the cell. You now have the cell keys." << std::endl;
 								m_player.AddItemToInventory(m_areasMap[States::OutsideCell].RemoveItem("Keys"));
+								itemFound = true;
 							}
 						}						
 					}
