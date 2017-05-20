@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game() : m_state(States::InsideCell)
+Game::Game() : m_state(States::InsideCell), m_gameDone(false), m_guardMoved(false)
 {
 	m_strings = m_XMLFetcher.GetStrings();
 
@@ -108,6 +108,84 @@ void Game::ProcessCommand(std::string command) {
 
 		}
 	}
+	if (firstWord == "unlock") {
+		if (secondWord == "cell") {
+			for (auto i : m_player.GetInventory()) {
+				if (i.name == "Keys") {
+					if (m_areasMap[m_state].IsLocked() == true) {
+						std::cout << "You unlock the cell door." << std::endl;
+						m_areasMap[m_state].SetLock(false);
+					}
+					else {
+						std::cout << "Cell door is already unlocked." << std::endl;
+					}
+				}
+			}
+		}
+	}
+	if (firstWord == "leave") {
+		if (secondWord == "cell") {
+			if (m_areasMap[m_state].IsLocked() == false) {
+				std::cout << "You go to leave the cell, before you do though, the guard wakes up!";
+				if (m_player.ObjectInInventory("Rock")) {
+					std::cout << " You throw the rock at the guard's head and knock him out. You step out of the cell." << std::endl << std::endl;
+					m_state = States::OutsideCell;
+					DisplayAreaDescription();
+				}
+				else {
+					std::cout << " The guard pulls his gun and shoots you. You die. Game over." << std::endl;
+					m_gameDone = true;
+				}
+			}
+		}
+	}
+	if (firstWord == "move") {
+		if (secondWord == "guard" && m_state == States::OutsideCell) {
+			std::cout << "\nWhere to? ";
+			std::string location;
+			std::cin >> location;
+
+			if (location == "cell") {
+				std::cout << "You move guard inside the cell and make sure to lock it." << std::endl;
+				m_guardMoved = true;
+			}
+		}
+	}
+	if (firstWord == "go") {
+		if (secondWord == "north" && m_state == States::OutsideCell) {
+			m_state = States::Stairwell;
+			if (!m_guardMoved) {
+				std::cout << "Alarm sounds and in no time guards are coming from above and below the stairwell. You are forced to surrender. Game over." << std::endl;
+				m_gameDone = true;
+			}
+			else {
+				std::cout << std::endl;
+				DisplayAreaDescription();
+			}
+		}
+		if (secondWord == "down" && m_state == States::Stairwell) {
+			
+			std::cout << m_strings["ExitDoor"] << std::endl;
+			m_gameDone = true;
+
+		}
+		if (secondWord == "up" && m_state == States::Stairwell) {
+			std::cout << "\nYou arrive at a door. Do you open the door or climb down the stairwell to where you were at?" << std::endl;
+			std::cout << "(type 'yes' to open door, or 'no' to climb down) ";
+			std::string decision;
+			std::cin >> decision;
+			if (decision == "yes") {
+				std::cout << "You enter a room full of guards. You try to leave, but the door is locked behind. the four guards pull there guns and you are forced to surrender. Game over." << std::endl;
+				m_gameDone = true;
+			}
+			else {
+				m_state = States::Stairwell;
+				std::cout << std::endl;
+				DisplayAreaDescription();
+			}
+		}
+
+	}
 }
 
 void Game::DisplayAreaDescription() {
@@ -115,11 +193,17 @@ void Game::DisplayAreaDescription() {
 	case States::InsideCell:
 		std::cout << m_strings["InACell"] << std::endl << std::endl;
 		std::cout << "You see: " << m_areasMap[States::InsideCell] << std::endl << std::endl;
+		std::cout << "Obvious locations: None." << std::endl << std::endl;
 		break;
 	case States::OutsideCell:
-
+		std::cout << m_strings["OutsideTheCell"] << std::endl << std::endl;
+		std::cout << "You see: " << m_areasMap[States::OutsideCell] << std::endl << std::endl;
+		std::cout << "Obvious locations: North." << std::endl << std::endl;
 		break;
 	case States::Stairwell:
+		std::cout << m_strings["AtAStairwell"] << std::endl << std::endl;
+		std::cout << "You see: " << m_areasMap[States::Stairwell] << std::endl << std::endl;
+		std::cout << "Obvious locations: Up, Down." << std::endl << std::endl;
 		break;
 	}
 

@@ -36,5 +36,8 @@ std::ostream & operator<<(std::ostream & stream, const Area & area)
 
 		stream << area.m_items[i].name << (i != area.m_items.size() - 1 ? ", " : ".");
 	}
+	if (area.m_items.size() == 0) {
+		stream << "Nothing special.";
+	}
 	return stream;
 }

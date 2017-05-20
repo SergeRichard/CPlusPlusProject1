@@ -8,8 +8,8 @@ int main()
 	while (true)
 	{
 		game.PlayerInput();
-
-
+		if (game.GameDone())
+			break;
 	}
 
 

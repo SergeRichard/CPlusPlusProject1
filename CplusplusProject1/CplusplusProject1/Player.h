@@ -13,6 +13,7 @@ public:
 
 	void AddItemToInventory(Item item) { inventory.push_back(item); }
 	std::vector<Item> GetInventory() { return inventory; }
+	bool ObjectInInventory(std::string object);
 
 private:
 

@@ -21,6 +21,7 @@ public:
 	enum class States {InsideCell, OutsideCell, Stairwell};
 
 	void PlayerInput();
+	bool GameDone() { return m_gameDone; }
 private:
 	void DisplayAreaDescription();
 
@@ -33,5 +34,7 @@ private:
 	GameParser m_XMLFetcher;
 	States m_state;
 	Player m_player;
+	bool m_gameDone;
+	bool m_guardMoved;
 };
 

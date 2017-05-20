@@ -19,6 +19,9 @@ public:
 	void AddItem(Item item);
 	Item RemoveItem(std::string name);
 	bool IsLocked() { return m_locked; }
+	void SetLock(bool isLocked) {
+		m_locked = isLocked;
+	}
 	std::vector<Item> GetItems() { return m_items; }
 
 	friend std::ostream& operator<< (std::ostream& stream, const Area& area);
